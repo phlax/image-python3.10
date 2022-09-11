@@ -1,5 +1,9 @@
 #!/bin/bash -e
 
-pip install -r /workspace/requirements.txt
+PIP_REQUIREMENTS="${PIP_REQUIREMENTS:-/workspace/requirements.txt}"
+
+if [[ -n "$PIP_REQUIREMENTS" ]]; then
+    pip install -r "$PIP_REQUIREMENTS"
+fi
 
 exec "$@"
